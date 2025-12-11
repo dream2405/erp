@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: approval-request-service
+  namespace: erp
+spec:
+  selector:
+    app: approval-request-service
+  ports:
+  - name: http
+    port: 8081
+    targetPort: 8081
+  - name: grpc
+    port: 9090
+    targetPort: 9090

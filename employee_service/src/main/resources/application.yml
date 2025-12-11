@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: Employee Service
+  config:
+    import: classpath:application-secret.yml
+  flyway:
+    locations: "classpath:db/migration/mysql"
+    enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+server:
+  port: 8080

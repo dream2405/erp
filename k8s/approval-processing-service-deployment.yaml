@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: approval-processing-service
+  namespace: erp
+spec:
+  selector:
+    matchLabels:
+      app: approval-processing-service
+  template:
+    metadata:
+      labels:
+        app: approval-processing-service
+    spec:
+      containers:
+      - name: approval-processing-service
+        image: approval_processing_service:0.0.1-SNAPSHOT
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8083
+        - containerPort: 9091
+        env:
+        - name: SPRING_GRPC_CLIENT_DEFAULT_CHANNEL_ADDRESS
+          value: "static://approval-request-service:9090"

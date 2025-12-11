@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: Approval Request Service
+  grpc:
+    client:
+      default-channel:
+        address: static://localhost:9091
+    server:
+      port: 9090
+  config:
+    import: classpath:application-secret.yml
+
+server:
+  port: 8081

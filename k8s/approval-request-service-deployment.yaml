@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: approval-request-service
+  namespace: erp
+spec:
+  selector:
+    matchLabels:
+      app: approval-request-service
+  template:
+    metadata:
+      labels:
+        app: approval-request-service
+    spec:
+      containers:
+      - name: approval-request-service
+        image: approval_request_service:0.0.1-SNAPSHOT
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8081
+        - containerPort: 9090
+        env:
+        - name: SPRING_DATA_MONGODB_URI
+          value: "mongodb://mongo:27017/erp"
+        - name: SPRING_GRPC_CLIENT_DEFAULT_CHANNEL_ADDRESS
+          value: "static://approval-processing-service:9091"
