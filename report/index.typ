@@ -695,5 +695,43 @@ concurrency_scenario ✓ [======================================] 10 VUs  0m00.6
 
 #qbox()[*쿠버네티스 배포*]
 
-#v(8pt)
+모든 리소스는 `erp` 네임스페이스 하에 배포
 
+=== Namespace
+
+- `namespace.yaml`: `erp` 네임스페이스 생성
+
+=== Database
+
+- `db.yaml`: MySQL와 MongoDB 데이터베이스 리소스 정의
+
+=== Microservices
+
+각 마이크로서비스는 애플리케이션의 배포를 위한 `Deployment`와 내부 통신을 위한 `Service`로 구성
+
+- *Approval Request Service*: 결재 요청 관리 (`approval-request-service-deployment.yaml`, `approval-request-service-service.yaml`)
+- *Approval Processing Service*: 결재 처리 로직 (`approval-processing-service-deployment.yaml`, `approval-processing-service-service.yaml`)
+- *Notification Service*: 알림 발송 (`notification-service-deployment.yaml`, `notification-service-service.yaml`)
+- *Employee Service*: 사원 정보 관리 (`employee-service-deployment.yaml`, `employee-service-service.yaml`)
+
+=== Ingress
+
+- `ingress.yaml`: 클러스터 외부(`erp.local`)에서 내부 서비스로의 접근을 관리하며, 경로 기반 라우팅 설정
+
+=== 실행 및 검증
+
+`gradlew`를 사용하여 이미지 빌드
+
+```bash
+cd employee-service
+./gradlew bootBuildImage &
+
+cd ../approval-request-service
+./gradlew bootBuildImage &
+
+cd ../approval-processing-service
+./gradlew bootBuildImage &
+
+cd ../notification-service
+./gradlew bootBuildImage &
+```
