@@ -735,3 +735,24 @@ cd ../approval-processing-service
 cd ../notification-service
 ./gradlew bootBuildImage &
 ```
+
+생성된 이미지 확인
+
+#image("/assets/image-6.png")
+
+#pagebreak()
+
+미리 만들어 놓은 깃허브 토큰을 통하여 깃허브 패키지에 이미지 푸시
+
+#image("/assets/image-7.png")
+
+깃허브 패키지 설정에서 푸시된 4개의 이미지 모두 액세스 권한 public으로 변경
+
+#image("/assets/image-8.png")
+
+#pagebreak()
+
+쿠버네티스에 배포
+
+#image("/assets/image-5.png", height: 30%)
+

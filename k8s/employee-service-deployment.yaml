@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: employee-service
-        image: employee_service:0.0.1-SNAPSHOT
+        image: ghcr.io/dream2405/employee_service:0.0.1-SNAPSHOT
         imagePullPolicy: Never
         ports:
         - containerPort: 8080

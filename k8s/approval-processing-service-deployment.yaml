@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: approval-processing-service
-        image: approval_processing_service:0.0.1-SNAPSHOT
+        image: ghcr.io/dream2405/approval_processing_service:0.0.1-SNAPSHOT
         imagePullPolicy: Never
         ports:
         - containerPort: 8083
